@@ -44,9 +44,9 @@ return array(
     ),
     'view_manager' => array(
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../view/video-manager/index/copyright-notice.phtml',
             'simple-output' => __DIR__ . '/../view/video-manager/index/simple-output.phtml',
             'copyright' => __DIR__ . '/../view/video-manager/index/copyright-notice.phtml',
+            'video-layout' => __DIR__ . '/../view/layout/video-layout.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
