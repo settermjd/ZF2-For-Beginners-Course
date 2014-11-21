@@ -1,6 +1,8 @@
 <?php
 namespace VideoManager;
 
+use Zend\ModuleManager\ModuleManager;
+
 class Module
 {
     public function getConfig()

@@ -29,6 +29,8 @@ class IndexController extends AbstractActionController
 
     public function deleteAction()
     {
+        $this->layout('video-layout');
+
         return new ViewModel();
     }
 
