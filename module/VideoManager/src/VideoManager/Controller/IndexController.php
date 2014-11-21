@@ -2,11 +2,19 @@
 
 namespace VideoManager\Controller;
 
+use VideoManager\Tables\VideoTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    protected $videoTable;
+
+    public function __construct(VideoTable $videoTable)
+    {
+        $this->videoTable = $videoTable;
+    }
+
     public function indexAction()
     {
         $view = new ViewModel(array(
@@ -23,8 +31,7 @@ class IndexController extends AbstractActionController
             'car' => 'Porsche 911'
         ));
 
-        $videoTable = $this->getServiceLocator()->get('VideoManager\Tables\VideoTable');
-        $results = $videoTable->fetchMostRecent();
+        $results = $this->videoTable->fetchMostRecent();
         print count($results); // print $results->count();
 
         return $view;
