@@ -7,7 +7,6 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
-
     public function indexAction()
     {
         $view = new ViewModel(array(
@@ -23,6 +22,10 @@ class IndexController extends AbstractActionController
             ),
             'car' => 'Porsche 911'
         ));
+
+        $videoTable = $this->getServiceLocator()->get('VideoManager\Tables\VideoTable');
+        $results = $videoTable->fetchMostRecent();
+        print count($results); // print $results->count();
 
         return $view;
     }
