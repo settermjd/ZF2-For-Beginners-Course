@@ -51,6 +51,7 @@ return array(
             'copyright' => __DIR__ . '/../view/video-manager/index/copyright-notice.phtml',
             'video-layout' => __DIR__ . '/../view/layout/video-layout.phtml',
             'video-records-partial' => __DIR__ . '/../view/video-manager/index/partials/video-records-partial.phtml',
+            'view-record' => __DIR__ . '/../view/video-manager/index/partials/video-record.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
