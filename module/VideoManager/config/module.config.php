@@ -21,7 +21,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action][/pages/:page]]',
+                            'route'    => '/[:controller[/:action][/pages/:page][/perPage/:perPage]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -89,6 +89,7 @@ return array(
             'video-layout' => __DIR__ . '/../view/layout/video-layout.phtml',
             'video-records-partial' => __DIR__ . '/../view/video-manager/index/partials/video-records-partial.phtml',
             'view-record' => __DIR__ . '/../view/video-manager/index/partials/video-record.phtml',
+            'paginator/default' => __DIR__ . '/../view/video-manager/index/partials/pagination.phtml'
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

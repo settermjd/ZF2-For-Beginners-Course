@@ -2,20 +2,27 @@ Action "index", controller "Index", module "VideoManager".
 
 <div class="row">
     <table class="table table-bordered">
-        <?php
-            $output = array(
-                'allRouteParams', 'paramPage',
-                'allPostData', 'allGetData',
-                'allHeaderData', 'allCookieData'
-            );
-        ?>
-        <?php foreach ($output as $item): ?>
-        <tr>
-            <th><?php print $item; ?></th>
-            <td><pre><?php print_r($this->$item); ?></pre></td>
-        </tr>
-        <?php endforeach; ?>
+    <tr>
+        <th>Title</th>
+        <th>Release Date</th>
+        <th>Synopsis</th>
+        <th>Website</th>
+    </tr>
+    <?php foreach ($this->results as $result): ?>
+    <tr>
+        <td><?php print $result->title; ?></td>
+        <td><?php print $result->releaseDate; ?></td>
+        <td><?php print $result->synopsis; ?></td>
+        <td><?php print $result->website; ?></td>
+    </tr>
+    <?php endforeach; ?>
     </table>
 </div>
+
+<?php echo $this->paginationControl(
+    $this->results, 'Sliding',
+    'paginator/default',
+    array('route' => 'video/default', 'routeParams' => array('page' => $this->paramPage))
+); ?>
 
 <?php print $this->render('copyright'); ?>
