@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>Video ID</th>
+        <th>Title</th>
+        <th>Duration</th>
+        <th>Release Date</th>
+        <th>Website</th>
+    </tr>
+    <?php print $this->partialLoop(
+        'view-record', $this->records
+    );?>
+</table>

@@ -8,4 +8,8 @@ Action "index", controller "Index", module "VideoManager".
     <li><?php print $this->car; ?></li>
 </ul>
 
+<?php print $this->partial('video-records-partial', array(
+    'records' => $this->records
+)); ?>
+
 <?php print $this->render('copyright'); ?>
