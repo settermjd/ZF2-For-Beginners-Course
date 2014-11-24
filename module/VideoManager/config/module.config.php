@@ -33,6 +33,18 @@ return array(
                             ),
                         ),
                     ),
+                    'view' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/view[/:id]',
+                            'constraints' => array(
+                                'id' => '[0-9]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'view'
+                            )
+                        ),
+                    ),
                     'manage' => array(
                         'type' => 'segment',
                         'options' => array(
@@ -42,6 +54,18 @@ return array(
                             ),
                             'defaults' => array(
                                 'action' => 'manage',
+                            )
+                        ),
+                        'may_terminate' => true,
+                    ),
+                    'search' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/search',
+                            'constraints' => array(
+                            ),
+                            'defaults' => array(
+                                'action' => 'search',
                             )
                         ),
                         'may_terminate' => true,

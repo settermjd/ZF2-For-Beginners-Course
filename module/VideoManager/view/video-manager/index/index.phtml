@@ -1,9 +1,21 @@
 Action "index", controller "Index", module "VideoManager".
 
-<?php print $this->flashMessenger()->render('info'); ?>
-
-<?php print $this->partial('video-records-partial', array(
-    'records' => $this->records
-)); ?>
+<div class="row">
+    <table class="table table-bordered">
+        <?php
+            $output = array(
+                'allRouteParams', 'paramPage',
+                'allPostData', 'allGetData',
+                'allHeaderData', 'allCookieData'
+            );
+        ?>
+        <?php foreach ($output as $item): ?>
+        <tr>
+            <th><?php print $item; ?></th>
+            <td><pre><?php print_r($this->$item); ?></pre></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
 
 <?php print $this->render('copyright'); ?>

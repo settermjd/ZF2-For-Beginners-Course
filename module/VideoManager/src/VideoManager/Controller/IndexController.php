@@ -18,20 +18,22 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        $view = new ViewModel(array(
-            'music' => 'rock',
-            'artist' => 'pearl jam'
-        ));
-
-        $view->setVariable('socialMedia', 'Google+');
+        $view = new ViewModel();
 
         $view->setVariables(array(
-            'networks' => array(
-                'Twitter', 'Google+', 'LinkedIn', 'Facebook'
-            ),
-            'car' => 'Porsche 911',
-            'records' => $this->videoTable->fetchMostRecent()
+            'allRouteParams' => $this->params()->fromRoute(),
+            'paramPage' => $this->params()->fromRoute('page', 'not set'),
+            'allPostData' => $this->getRequest()->getPost(),
+            'allGetData' => $this->getRequest()->getQuery(),
+            'allHeaderData' => $this->getRequest()->getHeaders('accept')->getFieldValue(),
+            'allCookieData' => $this->getRequest()->getCookie('PHPSESSID')->getFieldValue()
         ));
+
+        if ($this->getRequest()->isGet()) {
+            $view->setVariable(
+                'allHeaderData', $this->getRequest()->getHeader('accept')
+            );
+        }
 
         return $view;
     }
@@ -45,7 +47,24 @@ class IndexController extends AbstractActionController
 
     public function viewAction()
     {
-        return new ViewModel();
+        $videoId = (int)$this->params()->fromRoute('id');
+
+        $view = new ViewModel();
+
+        if (!empty($videoId)) {
+            if ($video = $this->videoTable->fetchById($videoId)) {
+                $view->setVariable('video', $video);
+            } else {
+                $this->flashMessenger()->addInfoMessage(
+                    'Unable to find that video. Perhaps a new one?'
+                );
+                return $this->redirect()->toRoute(
+                    'video', array('action' => 'manage')
+                );
+            }
+        }
+
+        return $view;
     }
 
     public function searchAction()
