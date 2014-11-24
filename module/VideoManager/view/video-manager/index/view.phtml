@@ -1,0 +1,40 @@
+<h1 class="page-header"><?php print $this->translate('Video Details'); ?></h1>
+
+<ul class="breadcrumb">
+    <li><a href="<?php print $this->url('video'); ?>"><?php print $this->translate('Home'); ?></a></li>
+    <li><a href="<?php print $this->url('video/search'); ?>"><?php print $this->translate('Search Videos'); ?></a></li>
+    <li class="active"><?php print
+            $this->translate('Video Details') . sprintf(" (%s)", $this->escapeHtml($video->title));
+        ?></li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-condensed table-responsive table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <th><?php print $this->translate('Title'); ?></th>
+                    <td><?php print $this->escapeHtml($video->title); ?></td>
+                </tr>
+                <tr>
+                    <th><?php print $this->translate('Director'); ?></th>
+                    <td><?php print $this->escapeHtml($video->directorId); ?></td>
+                </tr>
+                <tr>
+                    <th><?php print $this->translate('Release Date'); ?></th>
+                    <td><?php print $this->escapeHtml($video->releaseDate); ?></td>
+                </tr>
+                <tr>
+                    <th><?php print $this->translate('Synopsis'); ?></th>
+                    <td><?php print $this->escapeHtml($video->synopsis); ?></td>
+                </tr>
+                <tr>
+                    <th><?php print $this->translate('Website'); ?></th>
+                    <td><a href="<?php print $video->website; ?>">
+                            <?php print $video->website; ?>
+                    </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

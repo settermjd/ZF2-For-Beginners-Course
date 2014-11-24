@@ -1,0 +1,81 @@
+<h1 class="page-header"><?php print $this->translate('Manage Videos'); ?></h1>
+
+<ul class="breadcrumb">
+    <li><a href="<?php print $this->url('video'); ?>"><?php echo $this->translate('Home'); ?></a>
+    </li>
+    <li class="active"><?php echo $this->translate('Manage Videos'); ?></li>
+</ul>
+
+<div class="container-fluid">
+    <div class="row">
+        <?php
+        $form = $this->form;
+        $form->setAttribute('action', $this->url('video/manage'));
+        $form->setAttribute('class', 'form-horizontal');
+        $form->setAttribute('method', 'post');
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        ?>
+        <div class="form-group">
+            <?php
+            $element = $form->get('title');
+            echo $this->formLabel($element);
+            echo $this->formText($element);
+            echo $this->formElementErrors($element);
+            ?>
+        </div>
+
+        <div class="form-group">
+            <?php
+            $element = $form->get('directorId');
+            $element->setAttribute('id', 'directorId');
+            echo $this->formRow($element);
+            ?>
+        </div>
+
+        <div class="form-group">
+            <?php
+            $element = $form->get('duration');
+            echo $this->formRow($element);
+            ?>
+        </div>
+
+        <div class="form-group">
+            <?php
+            $element = $form->get('genre');
+            echo $this->formRow($element);
+            ?>
+        </div>
+
+        <div class="form-group">
+            <?php
+            $element = $form->get('releaseDate');
+            echo $this->formRow($element/*, null, false*/);
+            ?>
+        </div>
+
+        <div class="form-group">
+            <?php
+            $element = $form->get('website');
+            echo $this->formRow($element);
+            ?>
+        </div>
+
+        <div class="form-group">
+            <?php
+            $element = $form->get('synopsis');
+            echo $this->formRow($element);
+            ?>
+        </div>
+
+        <?php
+        echo $this->formHidden($form->get('videoId'));
+        echo $this->formSubmit($form->get('submit'));
+        ?>&nbsp;
+        <a href="<?php print $this->url('video'); ?>" class="btn">
+            <?php print $this->translate('Cancel'); ?>
+        </a>
+        <?php echo $this->form()->closeTag(); ?>
+
+    </div>
+</div>
