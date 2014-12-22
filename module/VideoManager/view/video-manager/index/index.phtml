@@ -1,12 +1,6 @@
 Action "index", controller "Index", module "VideoManager".
 
-<ul>
-    <li><?php print $this->music; ?></li>
-    <li><?php print $this->artist; ?></li>
-    <li><?php print $this->socialMedia; ?></li>
-    <li><?php print_r($this->networks); ?></li>
-    <li><?php print $this->car; ?></li>
-</ul>
+<?php print $this->flashMessenger()->render('info'); ?>
 
 <?php print $this->partial('video-records-partial', array(
     'records' => $this->records
