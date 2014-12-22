@@ -48,6 +48,7 @@ return array(
     'view_manager' => array(
         'template_map' => array(
             'video-layout' => __DIR__ . '/../view/layout/video-layout.phtml',
+            'video-records-partial' => __DIR__ . '/../view/video-manager/index/partials/video-records-partial.phtml',
             'simple-output' => __DIR__ . '/../view/video-manager/index/simple-output.phtml',
             'copyright' => __DIR__ . '/../view/video-manager/index/copyright-notice.phtml',
         ),
