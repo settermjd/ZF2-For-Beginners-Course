@@ -24,6 +24,8 @@ class IndexController extends AbstractActionController
             'car' => 'Porsche 911'
         ));
 
+        $view->setTemplate('simple-output');
+
         return $view;
     }
 
