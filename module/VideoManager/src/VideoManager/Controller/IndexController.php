@@ -23,6 +23,10 @@ class IndexController extends AbstractActionController
             ),
             'car' => 'Porsche 911'
         ));
+        
+        $videoTable = $this->getServiceLocator()->get('VideoManager\Tables\VideoTable');
+        $results = $videoTable->fetchMostRecent();
+        print count($results); // print $results->count();
 
         return $view;
     }
