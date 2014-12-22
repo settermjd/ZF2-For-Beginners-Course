@@ -13,6 +13,26 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
+    public function deleteAction()
+    {
+        return new ViewModel();
+    }
+
+    public function viewAction()
+    {
+        return new ViewModel();
+    }
+
+    public function searchAction()
+    {
+        return new ViewModel();
+    }
+
+    public function manageAction()
+    {
+        return new ViewModel();
+    }
+
 
 }
 
