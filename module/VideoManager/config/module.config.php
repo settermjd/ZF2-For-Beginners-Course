@@ -45,8 +45,31 @@ return array(
                             )
                         ),
                         'may_terminate' => true,
+                    ),
+                    'view' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/view[/:id]',
+                            'constraints' => array(
+                                'id' => '[0-9]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'view'
+                            )
+                        ),
+                    ),
+                    'search' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/search',
+                            'constraints' => array(
+                            ),
+                            'defaults' => array(
+                                'action' => 'search',
+                            )
+                        ),
+                        'may_terminate' => true,
                     )
-
                 ),
             ),
         ),
