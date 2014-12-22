@@ -6,9 +6,16 @@ use VideoManager\Models\Video;
 use VideoManager\Tables\VideoTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Paginator\Paginator;
+use Zend\Paginator\Adapter\Iterator;
+use Zend\Paginator\Adapter\ArrayAdapter;
 
 class IndexController extends AbstractActionController
 {
+    const DEFAULT_RECORDS_PER_PAGE = 20;
+
+    const DEFAULT_PAGE = 1;
+
     protected $videoTable;
 
     public function __construct(VideoTable $videoTable)
@@ -23,10 +30,7 @@ class IndexController extends AbstractActionController
         $view->setVariables(array(
             'allRouteParams' => $this->params()->fromRoute(),
             'paramPage' => $this->params()->fromRoute('page', 'not set'),
-            'allPostData' => $this->getRequest()->getPost(),
-            'allGetData' => $this->getRequest()->getQuery(),
-            'allHeaderData' => $this->getRequest()->getHeaders('accept')->getFieldValue(),
-            'allCookieData' => $this->getRequest()->getCookie('PHPSESSID')->getFieldValue()
+            'results' => $this->getPaginator($this->videoTable->fetchMostRecent())
         ));
 
         if ($this->getRequest()->isGet()) {
@@ -119,6 +123,25 @@ class IndexController extends AbstractActionController
         ));
     }
 
+    public function getPaginator($resultset = array())
+    {
+        if (is_array($resultset)) {
+            $paginator = new Paginator(new ArrayAdapter($resultset));
+        } elseif ($resultset instanceof \Iterator) {
+            $paginator = new Paginator(new Iterator($resultset));
+        } else {
+            $paginator = new Paginator(new ArrayAdapter());
+        }
+
+        $paginator->setCurrentPageNumber(
+            $this->params()->fromRoute('page', self::DEFAULT_PAGE)
+        );
+        $paginator->setItemCountPerPage(
+            $this->params()->fromRoute('perPage', self::DEFAULT_RECORDS_PER_PAGE)
+        );
+
+        return $paginator;
+    }
 
 }
 
