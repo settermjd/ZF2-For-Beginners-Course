@@ -39,8 +39,11 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'VideoManager\Controller\Index' => 'VideoManager\Controller\IndexController'
+            //'VideoManager\Controller\Index' => 'VideoManager\Controller\IndexController'
         ),
+        'factories' => array(
+            'VideoManager\Controller\Index'  => 'VideoManager\Controller\Factory\IndexControllerFactory',
+        )
     ),
     'view_manager' => array(
         'template_map' => array(
