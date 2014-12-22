@@ -28,12 +28,10 @@ class IndexController extends AbstractActionController
             'networks' => array(
                 'Twitter', 'Google+', 'LinkedIn', 'Facebook'
             ),
-            'car' => 'Porsche 911'
+            'car' => 'Porsche 911',
+            'records' => $this->videoTable->fetchMostRecent()
         ));
         
-        $results = $this->videoTable->fetchMostRecent();
-        print count($results); // print $results->count();
-
         return $view;
     }
 
