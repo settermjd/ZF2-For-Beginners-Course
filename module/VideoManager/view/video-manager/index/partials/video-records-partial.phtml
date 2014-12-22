@@ -6,13 +6,7 @@
         <th>Release Date</th>
         <th>Website</th>
     </tr>
-    <?php foreach ($this->records as $record): ?>
-    <tr>
-        <td><?php print $record->videoId; ?></td>
-        <td><?php print $record->title; ?></td>
-        <td><?php print $record->duration; ?></td>
-        <td><?php print $record->releaseDate; ?></td>
-        <td><?php print $record->website; ?></td>
-    </tr>
-    <?php endforeach; ?>
+    <?php print $this->partialLoop(
+        'view-record', $this->records
+    );?>
 </table>
