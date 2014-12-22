@@ -20,4 +20,15 @@ class Module
             ),
         );
     }
+    
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'VideoManager\Tables\VideoTable' => 'VideoManager\Tables\Factories\VideoTableFactory',
+                'VideoManager\Tables\VideoTableGateway' => 'VideoManager\Tables\Factories\VideoTableGatewayFactory'
+            )
+        );
+    }
+
 }
