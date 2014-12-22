@@ -2,6 +2,7 @@
 
 namespace VideoManager\Forms;
 
+use VideoManager\InputFilter\ManageVideoInputFilter;
 use Zend\Form\Form;
 
 class ManageRecordForm extends Form
@@ -9,13 +10,12 @@ class ManageRecordForm extends Form
     public function __construct()
     {
         parent::__construct('ManageRecordForm');
+        $this->setInputFilter(new ManageVideoInputFilter());
     }
 
     public function init()
     {
         $this->setAttribute('method', 'post');
-        /*$this->setAttribute('class', 'form-horizontal')
-             ->setAttribute('action', '/video/manage');*/
 
         // Add form elements
         $this->add(array(
