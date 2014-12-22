@@ -10,7 +10,21 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $view = new ViewModel(array(
+            'music' => 'rock',
+            'artist' => 'pearl jam'
+        ));
+
+        $view->setVariable('socialMedia', 'Google+');
+
+        $view->setVariables(array(
+            'networks' => array(
+                'Twitter', 'Google+', 'LinkedIn', 'Facebook'
+            ),
+            'car' => 'Porsche 911'
+        ));
+
+        return $view;
     }
 
     public function deleteAction()
