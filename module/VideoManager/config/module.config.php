@@ -33,6 +33,20 @@ return array(
                             ),
                         ),
                     ),
+                    'manage' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => '/manage[/:id]',
+                            'constraints' => array(
+                                'id'     => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                                'action' => 'manage',
+                            )
+                        ),
+                        'may_terminate' => true,
+                    )
+
                 ),
             ),
         ),
